@@ -51,10 +51,7 @@ const OrderPage = (props) => {
                 </div>
                 <div className="orderRow">
                   <div className="orderName">{item.productId.name}</div>
-                  <div className="orderPrice">
-                    <BiRupee />
-                    {item.payablePrice}
-                  </div>
+                  <div className="orderPrice">${item.payablePrice}</div>
                   <div>{order.paymentStatus}</div>
                 </div>
               </Link>

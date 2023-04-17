@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import flipkartLogo from "../../images/logo/flipkart.png";
+import Logo from "../../images/logo/flipkart.png";
 import goldenStar from "../../images/logo/golden-star.png";
 import { IoIosArrowDown, IoIosCart, IoIosSearch } from "react-icons/io";
 import {
@@ -73,20 +73,14 @@ const Header = (props) => {
       <DropdownMenu
         menu={<a className="fullName">{auth.user.fullName}</a>}
         menus={[
-          { label: "My Profile", href: "", icon: null },
-          { label: "SuperCoin Zone", href: "", icon: null },
-          { label: "Flipkart Plus Zone", href: "", icon: null },
+          { label: "My Profile", href: "/account", icon: null },
+
           {
             label: "Orders",
             href: `/account/orders`,
             icon: null,
           },
-          { label: "Wishlist", href: "", icon: null },
-          { label: "My Chats", href: "", icon: null },
-          { label: "Coupons", href: "", icon: null },
-          { label: "Rewards", href: "", icon: null },
-          { label: "Notifications", href: "", icon: null },
-          { label: "Gift Cards", href: "", icon: null },
+
           { label: "Logout", href: "", icon: null, onClick: logout },
         ]}
       />
@@ -109,7 +103,6 @@ const Header = (props) => {
         }
         menus={[
           { label: "My Profile", href: "", icon: null },
-          { label: "Flipkart Plus Zone", href: "", icon: null },
           {
             label: "Orders",
             href: `/account/orders`,
@@ -118,9 +111,6 @@ const Header = (props) => {
               !auth.authenticate && setLoginModal(true);
             },
           },
-          { label: "Wishlist", href: "", icon: null },
-          { label: "Rewards", href: "", icon: null },
-          { label: "Gift Cards", href: "", icon: null },
         ]}
         firstMenu={
           <div className="firstmenu">
@@ -211,17 +201,15 @@ const Header = (props) => {
         {/* Logo  */}
         <div className="logo">
           <a href="">
-            <img src={flipkartLogo} className="logoimage" alt="" />
-          </a>
-          <a style={{ marginTop: "-10px" }}>
-            <span className="exploreText">Explore</span>
-            <span className="plusText">Plus</span>
-            <img src={goldenStar} className="goldenStar" alt="" />
+            <img
+              src={Logo}
+              className="logoimage"
+              alt=""
+              style={{ width: "50px" }}
+            />
           </a>
         </div>
-        {/* logo ends here */}
 
-        {/* search component */}
         <div
           style={{
             padding: "0 10px",
@@ -250,16 +238,9 @@ const Header = (props) => {
             menu={
               <a className="more">
                 <span>More</span>
-                <IoIosArrowDown />
               </a>
             }
-            menus={[
-              { label: "Notification Preference", href: "", icon: null },
-              { label: "Sell on flipkart", href: "", icon: null },
-              { label: "24x7 Customer Care", href: "", icon: null },
-              { label: "Advertise", href: "", icon: null },
-              { label: "Download App", href: "", icon: null },
-            ]}
+            menus={[{ label: "Notification Preference", href: "", icon: null }]}
           />
           <div>
             <a href={`/cart`} className="cart">
