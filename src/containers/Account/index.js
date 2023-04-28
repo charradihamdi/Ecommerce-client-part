@@ -14,24 +14,23 @@ const Account = () => {
   const [statut, setStatut] = useState("");
   const auth = useSelector((state) => state.auth);
   const userduPDATE = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
-
+  console.log("auth.user._id", auth.user._id);
+  var IdUser = auth.user._id;
+  const getUser = () => {
+    setUserInfo(dispatch(userInfo(IdUser)));
+  };
   useEffect(() => {
-    const getUser = async () => {
-      setUserInfo(await dispatch(userInfo(auth.user._id)));
-    };
     getUser();
-  }, [userInformation]);
+  }, [auth.user]);
+  console.log("userduPDATE", userduPDATE.user ? userduPDATE.user.data : null);
 
   const userUpdate = () => {
     const user = {
-      sexe,
       contactNumber,
       country,
-      statut,
     };
-    if (sexe === "" || country === "" || contactNumber === 0 || statut === "") {
+    if (country === "" || contactNumber === 0) {
       alert("Please complete and submit your information");
       return;
     }
@@ -144,6 +143,28 @@ const Account = () => {
                                 <div className="form-group">
                                   <label>Email:</label>
                                   <label>{auth.user.email}</label>
+                                </div>
+                              </div>
+
+                              <div className="col-xl-6 col-lg-6">
+                                <div className="form-group">
+                                  <label>Contact Number:</label>
+                                  <label>
+                                    {" "}
+                                    {userduPDATE.user
+                                      ? userduPDATE.user.data.contactNumber
+                                      : null}
+                                  </label>
+                                </div>
+                              </div>
+                              <div className="col-xl-6 col-lg-6">
+                                <div className="form-group">
+                                  <label>Country:</label>
+                                  <label>
+                                    {userduPDATE.user
+                                      ? userduPDATE.user.data.country
+                                      : null}
+                                  </label>
                                 </div>
                               </div>
                             </div>

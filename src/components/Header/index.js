@@ -75,12 +75,6 @@ const Header = (props) => {
         menus={[
           { label: "My Profile", href: "/account", icon: null },
 
-          {
-            label: "Orders",
-            href: `/account/orders`,
-            icon: null,
-          },
-
           { label: "Logout", href: "", icon: null, onClick: logout },
         ]}
       />

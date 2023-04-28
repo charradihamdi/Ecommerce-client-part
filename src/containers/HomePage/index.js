@@ -6,15 +6,18 @@ import MenuHeader from "../../components/MenuHeader";
 const HomePage = (props) => {
   return (
     <Layout>
-      <div class="hero-banner full jumbo-banner" style={{ marginTop: "160px" }}>
+      <div class="hero-banner full jumbo-banner" style={{ marginTop: "200px" }}>
         <div class="container">
-          <div className="row" style={{ maxWidth: "200rem", height: "60vh" }}>
+          <div
+            className="row"
+            style={{ maxWidth: "200rem", height: "60vh", margin: "2rem" }}
+          >
             <img
               style={{
                 width: "1200px",
                 height: "50vh",
                 position: "absolute",
-                zIndex: "0",
+                zIndex: "-10",
               }}
               src="https://www.tunisianet.com.tn/modules/wbimageslider/views/img/0de63b36cd1f9592709f34a234d73b5a2e74997c_Sans-titre-1.jpg"
               alt="latest property"
@@ -23,7 +26,7 @@ const HomePage = (props) => {
           </div>
           <div
             class="row align-items-center d-flex flex-column w-100"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", margin: "2rem" }}
           >
             <div class="col-lg-7 col-md-8">
               <h1>
@@ -83,19 +86,7 @@ const HomePage = (props) => {
           </div>
         </div>
       </div>
-      <div class="page-title inner-page">
-        <div class="container">
-          <div class="row h-25">
-            <div class="col-lg-12 col-md-12">
-              <h2 class="ipt-title">Contact Us</h2>
-              <span class="ipn-subtitle">
-                Looking For a laptop ? You Found.
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="ht-80"></div>
-      </div>
+
       <section class="pt-0">
         <div class="container overlio-top">
           <div class="row " style={{ maxWidth: "1200px" }}>
@@ -139,7 +130,7 @@ const HomePage = (props) => {
                     <div class="ct_cmp_brief">
                       <h5>Reach Us:</h5>
                       <span>
-                        22 Wilson Market, Montreal
+                        22 shopMarket, Tunis
                         <br />
                         Tunis, HPQCH
                       </span>
@@ -235,9 +226,9 @@ const HomePage = (props) => {
 
                       <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                          <label>Your Query</label>
+                          <label>Your description</label>
                           <textarea class="form-control with-light">
-                            About Your Query
+                            About Your description
                           </textarea>
                         </div>
                       </div>
