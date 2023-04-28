@@ -288,7 +288,7 @@ const Account = () => {
                             newPassword,
                             confirmedPassword,
                           }).then((res) => {
-                            alert(res);
+                            alert("password updated successfully ... ");
                             return (window.location = "/resetpassword");
                           });
                         }}
