@@ -287,8 +287,10 @@ const Account = () => {
                             oldPassword,
                             newPassword,
                             confirmedPassword,
+                          }).then((res) => {
+                            alert(res);
+                            return (window.location = "/resetpassword");
                           });
-                          //   return (window.location = "/resetpassword");
                         }}
                       >
                         reset password
