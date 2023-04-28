@@ -6,11 +6,15 @@ import { updateUser, userInfo } from "../../actions/";
 import { profilePicture } from "../../components/Header/consPicture";
 import "./style.css";
 import { signout } from "../../actions";
+import Axios from "../../helpers/axios";
 const Account = () => {
   const [country, setCountry] = useState("");
   const [userInformation, setUserInfo] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [sexe, setSexe] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setnewPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
   const [statut, setStatut] = useState("");
   const auth = useSelector((state) => state.auth);
   const userduPDATE = useSelector((state) => state.user);
@@ -223,6 +227,72 @@ const Account = () => {
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    <div className="_dashboard_content">
+                      <div className="_dashboard_content_header">
+                        <div className="_dashboard__header_flex">
+                          <h4>
+                            <i className="ti-lock-open mr-1"></i>Security
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-xl-12 col-lg-12">
+                        <div className="form-group">
+                          <label>oldPassword</label>
+                          <input
+                            type="text"
+                            label="oldPassword"
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
+                            className="form-control with-light"
+                          />
+                        </div>
+                      </div>
+                      <div className="d-flex">
+                        <div className="col-xl-6 col-lg-6">
+                          <div className="form-group">
+                            <label>newPassword</label>
+                            <input
+                              type="text"
+                              label="newPassword"
+                              value={newPassword}
+                              onChange={(e) => setnewPassword(e.target.value)}
+                              className="form-control with-light"
+                            />
+                          </div>
+                        </div>{" "}
+                        <div className="col-xl-6 col-lg-6">
+                          <div className="form-group">
+                            <label>confirmedPassword</label>
+                            <input
+                              type="text"
+                              label="confirmedPassword"
+                              value={confirmedPassword}
+                              onChange={(e) =>
+                                setConfirmedPassword(e.target.value)
+                              }
+                              className="form-control with-light"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        className="btn bg-red m-2"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          Axios.put(`password/charradihamdi1@gmail.com`, {
+                            oldPassword,
+                            newPassword,
+                            confirmedPassword,
+                          });
+                          //   return (window.location = "/resetpassword");
+                        }}
+                      >
+                        reset password
+                      </button>
                     </div>
                     <button
                       type="button"

@@ -114,7 +114,7 @@ const Header = (props) => {
                 setLoginModal(true);
                 setSignup(true);
               }}
-              style={{ color: "#2874f0" }}
+              style={{ color: "#006898" }}
             >
               Sign Up
             </a>
@@ -181,7 +181,7 @@ const Header = (props) => {
                 <MaterialButton
                   title="Request OTP"
                   bgColor="#ffffff"
-                  textColor="#2874f0"
+                  textColor="#006898"
                   style={{
                     margin: "20px 0",
                   }}
@@ -193,15 +193,17 @@ const Header = (props) => {
       </Modal>
       <div className="subHeader">
         {/* Logo  */}
-        <div className="logo">
-          <a href="">
-            <img
-              src={Logo}
-              className="logoimage"
-              alt=""
-              style={{ width: "50px" }}
-            />
-          </a>
+        <div className="">
+          <img
+            src={Logo}
+            className="logoimage"
+            alt=""
+            style={{
+              width: "50px",
+              borderRadius: "50%",
+              backgroundPosition: "contain",
+            }}
+          />
         </div>
 
         <div

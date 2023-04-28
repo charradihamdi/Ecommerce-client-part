@@ -63,7 +63,7 @@ const Address = ({
                   onClick={() => enableAddressEditForm(adr)}
                   style={{
                     fontWeight: "500",
-                    color: "#2874f0",
+                    color: "#006898",
                   }}
                 />
               )}

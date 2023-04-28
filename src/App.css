@@ -914,6 +914,10 @@ html body .bg-dark-blue {
   background-color: #192c48;
 }
 /*-------------- GLobal Settings: Rounds ----------------*/
+.row {
+  display: flex;
+  flex-direction: row;
+}
 .round {
   line-height: 48px;
   color: #ffffff;

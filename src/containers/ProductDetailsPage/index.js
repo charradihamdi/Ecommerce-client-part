@@ -57,7 +57,7 @@ const ProductDetailsPage = (props) => {
             </div>
 
             {/* action buttons */}
-            <div className="flexRow">
+            <div className="row">
               <MaterialButton
                 title="ADD TO CART"
                 bgColor="#ff9f00"
@@ -72,15 +72,6 @@ const ProductDetailsPage = (props) => {
                   dispatch(addToCart({ _id, name, price, img }));
                   props.history.push(`/cart`);
                 }}
-              />
-              <MaterialButton
-                title="BUY NOW"
-                bgColor="#fb641b"
-                textColor="#ffffff"
-                style={{
-                  marginLeft: "5px",
-                }}
-                icon={<AiFillThunderbolt />}
               />
             </div>
           </div>
