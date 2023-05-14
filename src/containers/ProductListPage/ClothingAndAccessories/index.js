@@ -28,6 +28,7 @@ const ClothingAndAccessories = (props) => {
           boxSizing: "border-box",
           padding: "10px",
           display: "flex",
+          flexDirection: "row",
         }}
       >
         {product.products.map((product) => (

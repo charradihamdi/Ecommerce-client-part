@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateUser, userInfo } from "../../actions/";
+import { updateUser, uploadPicture, userInfo } from "../../actions/";
 import { profilePicture } from "../../components/Header/consPicture";
 import "./style.css";
+import axios from "axios";
 import { signout } from "../../actions";
 import Axios from "../../helpers/axios";
 const Account = () => {
@@ -16,10 +17,10 @@ const Account = () => {
   const [newPassword, setnewPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [statut, setStatut] = useState("");
+  const [file, setFile] = useState();
   const auth = useSelector((state) => state.auth);
   const userduPDATE = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log("auth.user._id", auth.user._id);
   var IdUser = auth.user._id;
   const getUser = () => {
     setUserInfo(dispatch(userInfo(IdUser)));
@@ -46,6 +47,32 @@ const Account = () => {
       setStatut("");
     });
   };
+  const handleChange = async (e) => {
+    e.preventDefault();
+    setFile(e.target.files[0]);
+
+    const data = { file: e.target.files[0] };
+    console.log(data);
+    await axios.patch(
+      `http://localhost:5000/api/${auth.user._id}`,
+      {
+        file: data,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+  };
+  console.log(auth.user);
+  const handlePicture = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+
+    dispatch(uploadPicture(data, auth.user._id));
+  };
 
   return (
     <Layout>
@@ -60,10 +87,30 @@ const Account = () => {
                 <div className="dashboard-navbar overlio-top">
                   <div className="d-user-avater">
                     <img
-                      src={profilePicture}
-                      className="img-fluid rounded"
+                      src={
+                        userduPDATE.user
+                          ? `http://localhost:5000${userduPDATE.user.data.picture}`
+                          : profilePicture
+                      }
+                      className="img-fluid rounded profilImg"
                       alt=""
                     />
+                    <form
+                      action=""
+                      onSubmit={handlePicture}
+                      className="upload-pic"
+                    >
+                      <label htmlFor="file">Changer d'image</label>
+                      <input
+                        type="file"
+                        id="file"
+                        name="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => setFile(e.target.files[0])}
+                      />
+                      <br />
+                      <input type="submit" value="Envoyer" />
+                    </form>
                     <h4>{auth.user.fullName}</h4>
                   </div>
 
@@ -107,27 +154,8 @@ const Account = () => {
                   </div>
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="_dashboard_content">
-                      <div className="_dashboard_content_header">
-                        <div className="_dashboard__header_flex">
-                          <h4>
-                            <i className="fa fa-user mr-1"></i>My Account
-                          </h4>
-                        </div>
-                      </div>
-
                       <div className="_dashboard_content_body">
                         <div className="d-flex">
-                          <div className="col-auto">
-                            <div className="custom-file avater_uploads">
-                              <label
-                                className="custom-file-label"
-                                for="customFile"
-                              >
-                                <i className="fa fa-user"></i>
-                              </label>
-                            </div>
-                          </div>
-
                           <div className="col">
                             <div className="">
                               <div className="col-xl-6 col-lg-6">

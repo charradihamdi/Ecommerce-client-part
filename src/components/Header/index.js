@@ -10,7 +10,13 @@ import {
   DropdownMenu,
 } from "../MaterialUI";
 import { useDispatch, useSelector } from "react-redux";
-import { login, signout, getCartItems, signup as _signup } from "../../actions";
+import {
+  login,
+  signout,
+  getCartItems,
+  signup as _signup,
+  getProductsBySlug,
+} from "../../actions";
 import Cart from "../UI/Cart";
 
 /**
@@ -25,6 +31,7 @@ const Header = (props) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -123,7 +130,12 @@ const Header = (props) => {
       />
     );
   };
-
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let path = window.location.pathname;
+    path = path.slice(1);
+    dispatch(getProductsBySlug(path, search));
+  };
   return (
     <div className="header">
       <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
@@ -215,14 +227,19 @@ const Header = (props) => {
             <input
               className="searchInput"
               placeholder={"search for products, brands and more"}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <div className="searchIconContainer">
+            <button
+              className="searchIconContainer"
+              onClick={(e) => handleSearch(e)}
+            >
               <IoIosSearch
                 style={{
                   color: "#2874f0",
                 }}
               />
-            </div>
+            </button>
           </div>
         </div>
         {/* search component ends here */}

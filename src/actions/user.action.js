@@ -147,7 +147,7 @@ export const userInfo = (user) => {
     const res = await axios.get(`/${user}`, {
       ...user,
     });
-
+    console.log("response", res);
     if (res.status === 200) {
       const { data } = res;
 
@@ -173,6 +173,18 @@ export const updateUser = (userId, data) => {
       url: `http://localhost:5000/api/` + userId,
       data: { data },
     })
+      .then((res) => {
+        dispatch(userInfo(userId));
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const uploadPicture = (data, userId) => {
+  console.log(userId, data);
+  return (dispatch) => {
+    return axios
+      .post(`http://localhost:5000/api/upload/${userId}`, data)
       .then((res) => {
         dispatch(userInfo(userId));
       })
